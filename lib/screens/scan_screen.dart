@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+import 'package:smart_bag/constants.dart';
 
 class ScanScreen extends StatefulWidget {
   static const String id = 'scan_screen';
@@ -111,7 +112,7 @@ class _ScanScreenState extends State<ScanScreen> {
     if (_devicesList.isEmpty) {
       items.add(
         const DropdownMenuItem(
-          child: Text('NONE'),
+          child: Text('Turn on Bluetooth', style: TextStyle(color: Colors.black),),
         ),
       );
     } else {
@@ -133,36 +134,40 @@ class _ScanScreenState extends State<ScanScreen> {
       if (!isConnected) {
         // Trying to connect to the device using
         // its address
-        await BluetoothConnection.toAddress(_device.address)
-            .then((_connection) {
-          print('Connected to the device');
-          connection = _connection;
+        await BluetoothConnection.toAddress(_device.address).then(
+          (_connection) {
+            print('Connected to the device');
+            connection = _connection;
 
-          // Updating the device connectivity
-          // status to [true]
-          setState(() {
-            _connected = true;
-          });
+            // Updating the device connectivity
+            // status to [true]
+            setState(() {
+              _connected = true;
+            });
 
-          // This is for tracking when the disconnecting process
-          // is in progress which uses the [isDisconnecting] variable
-          // defined before.
-          // Whenever we make a disconnection call, this [onDone]
-          // method is fired.
-          connection.input.listen(null).onDone(() {
-            if (isDisconnecting) {
-              print('Disconnecting locally!');
-            } else {
-              print('Disconnected remotely!');
-            }
-            if (this.mounted) {
-              setState(() {});
-            }
-          },);
-        },).catchError((error) {
-          print('Cannot connect, exception occurred');
-          print(error);
-        },);
+            // This is for tracking when the disconnecting process
+            // is in progress which uses the [isDisconnecting] variable
+            // defined before.
+            // Whenever we make a disconnection call, this [onDone]
+            // method is fired.
+            connection.input.listen(null).onDone(
+              () {
+                if (isDisconnecting) {
+                  print('Disconnecting locally!');
+                } else {
+                  print('Disconnected remotely!');
+                }
+                if (this.mounted) {
+                  setState(() {});
+                }
+              },
+            );
+          },
+        ).catchError(
+          (error) {
+            print(error);
+          },
+        );
       }
     }
   }
@@ -186,55 +191,68 @@ class _ScanScreenState extends State<ScanScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: kAppName(context),),
       body: SafeArea(
-        child: Column(
-          children: [
-            Switch(
-              value: _bluetoothState.isEnabled,
-              onChanged: (bool value) {
-                future() async {
-                  if (value) {
-                    // Enable Bluetooth
-                    await FlutterBluetoothSerial.instance.requestEnable();
-                  } else {
-                    // Disable Bluetooth
-                    await FlutterBluetoothSerial.instance.requestDisable();
-                  }
+        child: Padding(
+          padding: kScreenpadding(context),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  kBluetooth(context),
+                  Switch(
+                    value: _bluetoothState.isEnabled,
+                    onChanged: (bool value) {
+                      future() async {
+                        if (value) {
+                          // Enable Bluetooth
+                          await FlutterBluetoothSerial.instance.requestEnable();
+                        } else {
+                          // Disable Bluetooth
+                          await FlutterBluetoothSerial.instance.requestDisable();
+                        }
 
-                  // In order to update the devices list
-                  await getPairedDevices();
-                  _isButtonUnavailable = false;
+                        // In order to update the devices list
+                        await getPairedDevices();
+                        _isButtonUnavailable = false;
 
-                  // Disconnect from any device before
-                  // turning off Bluetooth
-                  if (_connected) {
-                    _disconnect();
-                  }
-                }
+                        // Disconnect from any device before
+                        // turning off Bluetooth
+                        if (_connected) {
+                          _disconnect();
+                        }
+                      }
 
-                future().then((_) {
-                  setState(() {});
-                });
-              },
-            ),
-            Row(
-              children: [
-                DropdownButton(
+                      future().then((_) {
+                        setState(() {});
+                      });
+                    },
+                  ),
+                ],
+              ),
+              Flexible(
+                fit: FlexFit.loose,
+                child: DropdownButton(
                   items: _getDeviceItems(),
                   onChanged: (value) =>
                       setState(() => _device = value as BluetoothDevice),
                   value: _devicesList.isNotEmpty ? _device : null,
                 ),
-                ElevatedButton(
+              ),
+              Flexible(
+                fit: FlexFit.loose,
+                child: ElevatedButton(
                   onPressed: _isButtonUnavailable
                       ? null
-                      : _connected ? _disconnect : _connect,
-                  child:
-                  Text(_connected ? 'Disconnect' : 'Connect'),
-                )
-              ],
-            ),
-          ],
+                      : _connected
+                          ? _disconnect
+                          : _connect,
+                  child: Text(_connected ? 'Disconnect' : 'Connect'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
