@@ -16,8 +16,9 @@ class _ScanScreenState extends State<ScanScreen> {
       body: SafeArea(
         child: Center(
           child: TextButton(
+            style: kTextButtonStyle(context),
             onPressed: () {},
-            child: kScanText,
+            child: kScanText(context),
           ),
         ),
       ),
