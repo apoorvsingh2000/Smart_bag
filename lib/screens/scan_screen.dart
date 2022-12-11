@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
@@ -112,7 +114,10 @@ class _ScanScreenState extends State<ScanScreen> {
     if (_devicesList.isEmpty) {
       items.add(
         const DropdownMenuItem(
-          child: Text('Turn on Bluetooth', style: TextStyle(color: Colors.black),),
+          child: Text(
+            'Turn on Bluetooth',
+            style: TextStyle(color: Colors.black),
+          ),
         ),
       );
     } else {
@@ -184,6 +189,31 @@ class _ScanScreenState extends State<ScanScreen> {
     }
   }
 
+  String str0 = "0";
+  String str1 = "1";
+
+  void _sendOnMessageToBluetooth() async {
+    List<int> list = str1.codeUnits;
+    Uint8List bytes = Uint8List.fromList(list);
+    connection.output.add(bytes);
+    await connection.output.allSent;
+    setState(() {
+      _deviceState = 1; // device on
+    });
+  }
+
+// Method to send message
+// for turning the Bluetooth device off
+  void _sendOffMessageToBluetooth() async {
+    List<int> list = str0.codeUnits;
+    Uint8List bytes = Uint8List.fromList(list);
+    connection.output.add(bytes);
+    await connection.output.allSent;
+    setState(() {
+      _deviceState = -1; // device off
+    });
+  }
+
   bool _connected = false;
   BluetoothDevice _device = null as BluetoothDevice;
   bool _isButtonUnavailable = false;
@@ -191,7 +221,9 @@ class _ScanScreenState extends State<ScanScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: kAppName(context),),
+      appBar: AppBar(
+        title: kAppName(context),
+      ),
       body: SafeArea(
         child: Padding(
           padding: kScreenpadding(context),
@@ -210,7 +242,8 @@ class _ScanScreenState extends State<ScanScreen> {
                           await FlutterBluetoothSerial.instance.requestEnable();
                         } else {
                           // Disable Bluetooth
-                          await FlutterBluetoothSerial.instance.requestDisable();
+                          await FlutterBluetoothSerial.instance
+                              .requestDisable();
                         }
 
                         // In order to update the devices list
@@ -251,6 +284,15 @@ class _ScanScreenState extends State<ScanScreen> {
                   child: Text(_connected ? 'Disconnect' : 'Connect'),
                 ),
               ),
+              TextButton(
+                onPressed: _connected ? _sendOnMessageToBluetooth : null,
+                child: Text("ON"),
+              ),
+// OFF button
+              TextButton(
+                onPressed: _connected ? _sendOffMessageToBluetooth : null,
+                child: Text("OFF"),
+              )
             ],
           ),
         ),
