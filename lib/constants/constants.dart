@@ -13,6 +13,11 @@ kAppName(BuildContext context) => Text('Smart Bag', style: TextStyle(color: Colo
 EdgeInsets kScreenpadding (BuildContext context) => EdgeInsets.all(kScreenWidth(context)*0.03);
 EdgeInsets kScrollPadding (BuildContext context) => EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom,
     top: kScreenWidth(context)*0.03, left: kScreenWidth(context)*0.03, right: kScreenWidth(context)*0.03);
+EdgeInsets expantionTilePaddingFaq(BuildContext context) => EdgeInsets.only(
+    left: screenWidth(context) * 0.03,
+    right: screenWidth(context) * 0.03,
+    top: screenWidth(context) * 0.02,
+    bottom: screenWidth(context) * 0.02);
 
 //dynamic size
 double kScreenWidth(BuildContext context) => MediaQuery.of(context).size.width;
@@ -25,3 +30,6 @@ PersistentBottomNavBarItem navBarItem (String imagePath, String title) => Persis
   activeColorPrimary: Colors.white,
   inactiveColorPrimary: Colors.grey,
 );
+
+double screenWidth(BuildContext context) => MediaQuery.of(context).size.width;
+double screenHeight(BuildContext context) => MediaQuery.of(context).size.height;

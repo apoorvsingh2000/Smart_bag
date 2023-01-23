@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'constants.dart';
 
 //Styles
@@ -34,3 +35,23 @@ BoxDecoration backgroundDecoration = const BoxDecoration(
     ],
   ),
 );
+
+TextStyle headingTextStyle(BuildContext context) => GoogleFonts.raleway(
+     color: Colors.white, fontSize: screenWidth(context) * 0.1,
+    );
+
+TextStyle headingSubTextStyle(BuildContext context) => GoogleFonts.raleway(
+      color: Colors.black54,
+      fontSize: screenWidth(context) * 0.048,
+    );
+
+TextStyle faqTileHeadingTextStyle(BuildContext context) => GoogleFonts.raleway(
+      color: Colors.black54,
+      fontSize: screenWidth(context) * 0.048,
+    );
+
+TextStyle faqTileSubheadingTextStyle(BuildContext context) =>
+    GoogleFonts.raleway(
+      color: Colors.black54,
+      fontSize: screenWidth(context) * 0.043,
+    );

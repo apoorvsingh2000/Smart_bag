@@ -16,6 +16,7 @@ dependencies:
   flutter_bluetooth_serial:
   firebase_core: ^2.4.0
   persistent_bottom_nav_bar: ^5.0.2
+  google_fonts:
 
 dev_dependencies:
   flutter_test:
