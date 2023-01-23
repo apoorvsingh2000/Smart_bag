@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 //Text
 Text kScanText(BuildContext context) => Text('Scan', style: TextStyle(color: Colors.white, fontSize: kScreenWidth(context)*0.05),);
@@ -16,3 +17,11 @@ EdgeInsets kScrollPadding (BuildContext context) => EdgeInsets.only(bottom: Medi
 //dynamic size
 double kScreenWidth(BuildContext context) => MediaQuery.of(context).size.width;
 double kScreenHeight(BuildContext context) => MediaQuery.of(context).size.height;
+
+//bottom nav bar item
+PersistentBottomNavBarItem navBarItem (String imagePath, String title) => PersistentBottomNavBarItem(
+  icon: Image.asset(imagePath),
+  title: (title),
+  activeColorPrimary: Colors.white,
+  inactiveColorPrimary: Colors.grey,
+);
