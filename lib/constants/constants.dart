@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 //Text
@@ -25,10 +26,9 @@ double kScreenHeight(BuildContext context) => MediaQuery.of(context).size.height
 
 //bottom nav bar item
 PersistentBottomNavBarItem navBarItem (String imagePath, String title) => PersistentBottomNavBarItem(
-  icon: Image.asset(imagePath),
-  title: (title),
-  activeColorPrimary: Colors.white,
-  inactiveColorPrimary: Colors.grey,
+  icon: Image.asset(imagePath, color: Colors.black,),
+  title: (title),textStyle: GoogleFonts.raleway(),
+  activeColorPrimary: Colors.black,
 );
 
 double screenWidth(BuildContext context) => MediaQuery.of(context).size.width;

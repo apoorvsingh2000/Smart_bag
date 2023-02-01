@@ -17,3 +17,5 @@ String kFaqProfileImagePath = 'assets/images/profile.png';
 String kFaqHomeImagePath = 'assets/images/home.png';
 String kTimetableImagePath = 'assets/images/timetable.png';
 String kAllItemsImagePath = 'assets/images/items.png';
+String kProfileBigImagePath = 'assets/images/profile_big.png';
+String kSettingsImagePath = 'assets/images/settings.png';

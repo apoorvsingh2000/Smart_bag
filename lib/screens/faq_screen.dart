@@ -44,7 +44,7 @@ class _FaqScreenState extends State<FaqScreen> {
                 child: Card(
                   child: ExpansionTile(
                     title: Text("What are the rules?",
-                        style: faqTileHeadingTextStyle(context)),
+                        style: tileHeadingTextStyle(context)),
                     children: [
                       Padding(
                         padding: expantionTilePaddingFaq(context),
@@ -68,7 +68,7 @@ class _FaqScreenState extends State<FaqScreen> {
                 child: Card(
                   child: ExpansionTile(
                     title: Text("What are the perks of participating in Equinox?",
-                        style: faqTileHeadingTextStyle(context)),
+                        style: tileHeadingTextStyle(context)),
                     children: [
                       Center(
                         child: Padding(
@@ -89,7 +89,7 @@ class _FaqScreenState extends State<FaqScreen> {
                 child: Card(
                   child: ExpansionTile(
                     title: Text("Can I start working on the hack before the event?",
-                        style: faqTileHeadingTextStyle(context)),
+                        style: tileHeadingTextStyle(context)),
                     children: [
                       Center(
                         child: Padding(
@@ -110,7 +110,7 @@ class _FaqScreenState extends State<FaqScreen> {
                 child: Card(
                   child: ExpansionTile(
                     title: Text("How big can my team be? ",
-                        style: faqTileHeadingTextStyle(context)),
+                        style: tileHeadingTextStyle(context)),
                     children: [
                       Center(
                         child: Padding(
@@ -131,7 +131,7 @@ class _FaqScreenState extends State<FaqScreen> {
                 child: Card(
                   child: ExpansionTile(
                     title: Text("Do I have to pay to register?",
-                        style: faqTileHeadingTextStyle(context),),
+                        style: tileHeadingTextStyle(context),),
                     children: [
                       Center(
                         child: Padding(
@@ -152,7 +152,7 @@ class _FaqScreenState extends State<FaqScreen> {
                 child: Card(
                   child: ExpansionTile(
                     title: Text("Who all can participate?",
-                        style: faqTileHeadingTextStyle(context),),
+                        style: tileHeadingTextStyle(context),),
                     children: [
                       Center(
                         child: Padding(
@@ -173,7 +173,7 @@ class _FaqScreenState extends State<FaqScreen> {
                 child: Card(
                   child: ExpansionTile(
                     title: Text("What if I don’t know how to code? ",
-                        style: faqTileHeadingTextStyle(context)),
+                        style: tileHeadingTextStyle(context)),
                     children: [
                       Center(
                         child: Padding(
@@ -194,7 +194,7 @@ class _FaqScreenState extends State<FaqScreen> {
                 child: Card(
                   child: ExpansionTile(
                     title: Text("What if this is my first hack?",
-                        style: faqTileHeadingTextStyle(context)),
+                        style: tileHeadingTextStyle(context)),
                     children: [
                       Center(
                         child: Padding(
@@ -215,7 +215,7 @@ class _FaqScreenState extends State<FaqScreen> {
                 child: Card(
                   child: ExpansionTile(
                     title: Text("What can I build in the hack?",
-                        style: faqTileHeadingTextStyle(context)),
+                        style: tileHeadingTextStyle(context)),
                     children: [
                       Center(
                         child: Padding(

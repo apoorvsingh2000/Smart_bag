@@ -45,7 +45,7 @@ TextStyle headingSubTextStyle(BuildContext context) => GoogleFonts.raleway(
       fontSize: screenWidth(context) * 0.048,
     );
 
-TextStyle faqTileHeadingTextStyle(BuildContext context) => GoogleFonts.raleway(
+TextStyle tileHeadingTextStyle(BuildContext context) => GoogleFonts.raleway(
       color: Colors.black54,
       fontSize: screenWidth(context) * 0.048,
     );
