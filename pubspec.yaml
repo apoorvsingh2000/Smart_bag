@@ -18,6 +18,7 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   google_fonts:
   cloud_firestore: ^4.3.1
+  intl:
 
 dev_dependencies:
   flutter_test:

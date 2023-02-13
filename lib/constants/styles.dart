@@ -36,6 +36,11 @@ BoxDecoration backgroundDecoration = const BoxDecoration(
   ),
 );
 
+BoxDecoration textContainerDecoration = BoxDecoration(
+  color: Colors.white,
+  borderRadius: BorderRadius.circular(4.0),
+);
+
 TextStyle headingTextStyle(BuildContext context) => GoogleFonts.raleway(
      color: Colors.white, fontSize: screenWidth(context) * 0.1,
     );
@@ -55,3 +60,9 @@ TextStyle faqTileSubheadingTextStyle(BuildContext context) =>
       color: Colors.black54,
       fontSize: screenWidth(context) * 0.043,
     );
+
+TextStyle itemHeadingTextStyle(BuildContext context) => GoogleFonts.raleway(
+  color: Colors.black,
+  fontWeight: FontWeight.bold,
+  fontSize: screenWidth(context) * 0.04,
+);
