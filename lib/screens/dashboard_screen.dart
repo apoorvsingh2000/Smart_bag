@@ -133,12 +133,13 @@ class Dashboard extends StatelessWidget {
                                         Container(
                                           padding: EdgeInsets.all(
                                               screenWidth(context) * 0.01),
-                                          child:
-                                              Text(addlElement),
+                                          child: Text(addlElement),
                                         ),
                                         TextButton(
                                           onPressed: () => confirmDeleteDialog(
-                                              context, addlItemStream, addlElement),
+                                              context,
+                                              addlItemStream,
+                                              addlElement),
                                           child: Image.asset(
                                             kDeleteImagePath,
                                             height: screenWidth(context) * 0.04,
@@ -210,7 +211,9 @@ class Dashboard extends StatelessWidget {
                                       ),
                                       TextButton(
                                         onPressed: () => confirmDeleteDialog(
-                                            context, skipItemStream, skippedElement),
+                                            context,
+                                            skipItemStream,
+                                            skippedElement),
                                         child: Image.asset(
                                           kDeleteImagePath,
                                           height: screenWidth(context) * 0.04,
@@ -235,12 +238,16 @@ class Dashboard extends StatelessWidget {
     );
   }
 
-  confirmDeleteDialog(BuildContext context,
-      CollectionReference<Map<String, dynamic>> stream, String elementToDelete) {
+  confirmDeleteDialog(
+      BuildContext context,
+      CollectionReference<Map<String, dynamic>> stream,
+      String elementToDelete) {
     Widget cancelButton = TextButton(
       child: Text(kYesDelete),
       onPressed: () async {
-        await stream.doc('item_list').update({elementToDelete : FieldValue.delete()});
+        await stream
+            .doc('item_list')
+            .update({elementToDelete: FieldValue.delete()});
         print('@#%^&*()');
         // print(docRef.);
         Navigator.of(context, rootNavigator: true).pop('dialog');
