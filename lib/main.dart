@@ -1,8 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_bag/screens/ble_screen.dart';
 import 'package:smart_bag/screens/scan_screen.dart';
+import 'package:smart_bag/screens/HomeScreen.dart';
+import 'firebase_options.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,8 +19,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       routes: {
-        ScanScreen.id: (context) => ScanScreen(),
+        ScanScreen.id: (context) => BleScreen(),
+        HomeScreen.id: (context) => HomeScreen(),
       },
       initialRoute: ScanScreen.id,
     );

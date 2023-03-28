@@ -14,7 +14,12 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   flutter_bluetooth_serial:
+  flutter_blue: ^0.8.0
   firebase_core: ^2.4.0
+  persistent_bottom_nav_bar: ^5.0.2
+  google_fonts:
+  cloud_firestore: ^4.3.1
+  intl:
 
 dev_dependencies:
   flutter_test:
@@ -25,3 +30,6 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+
+  assets:
+    - assets/images/

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "87371512549",
+    "project_id": "smartbag-db5f6",
+    "storage_bucket": "smartbag-db5f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87371512549:android:f77ffb90fc5ef0afccb20c",
+        "android_client_info": {
+          "package_name": "com.example.apoorvsingh2000.smart_bag"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "87371512549-ur12ielncao64lf9ilcrkpjtrj4m61an.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiMemO1XVtYw_8o_AaFsneIdIUvYcWAwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "87371512549-ur12ielncao64lf9ilcrkpjtrj4m61an.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

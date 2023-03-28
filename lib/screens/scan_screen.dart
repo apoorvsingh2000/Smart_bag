@@ -6,6 +6,7 @@ import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:smart_bag/constants/constants.dart';
 import 'package:smart_bag/constants/strings.dart';
 import 'package:smart_bag/constants/styles.dart';
+import 'package:smart_bag/screens/HomeScreen.dart';
 
 class ScanScreen extends StatefulWidget {
   static const String id = 'scan_screen';
@@ -303,6 +304,7 @@ class _ScanScreenState extends State<ScanScreen> {
                 ? ElevatedButton(
                     onPressed: () {
                       _sendMessageToBluetooth(_idController, _pwdController);
+                      Navigator.pushNamed(context, HomeScreen.id);
                     },
                     child: Text(kSubmit),
                   )
